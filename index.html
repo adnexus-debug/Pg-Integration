@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Product</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to My Store</h1>
+  <div class="product">
+    <img src="product.jpg" alt="Product" width="200">
+    <h2>Premium Course</h2>
+    <p>₹499</p>
+    <button onclick="addToCart()">Buy Now</button>
+  </div>
+
+  <script>
+    function addToCart() {
+      // Store in local storage
+      localStorage.setItem("cart", JSON.stringify({ name: "Premium Course", price: 499 }));
+      window.location.href = "cart.html";
+    }
+  </script>
+</body>
+</html>
