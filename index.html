@@ -11,14 +11,14 @@
   <div class="product">
     <img src="product.jpg" alt="Product" width="200">
     <h2>Premium Course</h2>
-    <p>₹499.9</p>
+    <p>₹3</p>
     <button onclick="addToCart()">Buy Now</button>
   </div>
 
   <script>
     function addToCart() {
       // Store in local storage
-      localStorage.setItem("cart", JSON.stringify({ name: "Premium Course", price: 499 }));
+      localStorage.setItem("cart", JSON.stringify({ name: "Premium Course", price: 3 }));
       window.location.href = "cart.html";
     }
   </script>
