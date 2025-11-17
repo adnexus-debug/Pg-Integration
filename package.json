@@ -2,11 +2,8 @@
     "name": "pg-integration",
     "version": "1.0.0",
     "type": "module",
-    "engines": {
-      "node": "20.x"
-    },
     "scripts": {
-      "vercel-build": "echo 'Building for Vercel'"
+      "vercel-build": "echo 'Build triggered'"
     },
     "dependencies": {}
   }
