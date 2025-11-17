@@ -55,12 +55,22 @@ export default async function handler(req, res) {
       },
     });
 
-    res.status(200).json({
-      paymentUrl: payRes.data.data.redirectUrl,
-      merchantOrderId,
-    });
+    console.log("PhonePe payRes data:", payRes.data);
+
+    const redirectUrl =
+      payRes.data.redirectUrl ||
+      payRes.data.data?.redirectUrl ||
+      payRes.data.data?.instrumentResponse?.redirectInfo?.url ||
+      null;
+
+    if (!redirectUrl) {
+      console.error("Missing redirectUrl in PhonePe response:", payRes.data);
+      throw new Error("Missing redirectUrl in PhonePe response");
+    }
+
+    res.status(200).json({ paymentUrl: redirectUrl, merchantOrderId });
   } catch (err) {
-    console.error("💥 create-payment error:", err.message);
+    console.error("💥 create-payment error:", err.response?.data || err.message);
     res.status(500).json({ error: err.message });
   }
 }
